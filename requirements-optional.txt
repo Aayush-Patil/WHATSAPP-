@@ -1,0 +1,5 @@
+pypdf>=5,<7
+pytesseract>=0.3.13,<1
+Pillow>=10,<13
+transformers>=4.45,<6
+torch>=2.4

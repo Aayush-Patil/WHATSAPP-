@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f6f1" />
+    <title>ForwardCheck — Check before you share</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="ForwardCheck home"><span class="brand-mark">✓</span><span>ForwardCheck</span></a>
+      <div class="privacy-note"><span class="lock">◈</span> Your content is processed for this check</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow"><span class="pulse"></span> PAUSE. CHECK. THEN SHARE.</div>
+        <h1>Is this forward<br /><em>true?</em></h1>
+        <p class="intro">Check a message, screenshot, voice note, PDF, or link against reliable sources. Get the evidence and a plain-language explanation.</p>
+      </section>
+
+      <section class="checker-card" aria-labelledby="input-title">
+        <div class="card-heading">
+          <div><div class="step-label">YOUR CONTENT</div><h2 id="input-title">What would you like to check?</h2></div>
+          <span class="secure-badge">Private by default</span>
+        </div>
+
+        <form id="audit-form">
+          <label class="field-label" for="message">Paste a forwarded message</label>
+          <textarea id="message" name="message" placeholder="Paste the message here…&#10;&#10;Example: Forward this to everyone! A new government scheme gives every family ₹10,000 this month."></textarea>
+
+          <div class="drop-zone" id="drop-zone">
+            <input id="files" name="files" type="file" multiple accept="image/*,.pdf,.txt,.md,.csv,.json,audio/*,.mp3,.m4a,.wav,.ogg,.webm" />
+            <div class="upload-icon">↑</div>
+            <div class="drop-copy"><strong>Drop a screenshot, voice note, or document</strong><span>Images, audio, PDF, or text · up to 15 MB total</span></div>
+            <label for="files" class="browse-button">Choose files</label>
+            <div id="file-list" class="file-list" aria-live="polite"></div>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-field">
+              <label class="field-label" for="urls">Add source links <span class="optional">optional</span></label>
+              <input id="urls" name="urls" type="text" placeholder="https://… (one or more links)" />
+            </div>
+            <div class="form-field">
+              <label class="field-label" for="language">Explanation language</label>
+              <select id="language" name="language">
+                <option>English</option><option>हिन्दी (Hindi)</option><option>मराठी (Marathi)</option><option>বাংলা (Bengali)</option><option>தமிழ் (Tamil)</option><option>తెలుగు (Telugu)</option><option>ಕನ್ನಡ (Kannada)</option><option>ગુજરાતી (Gujarati)</option><option>ਪੰਜਾਬੀ (Punjabi)</option><option>اردو (Urdu)</option>
+              </select>
+            </div>
+          </div>
+
+          <details class="advanced">
+            <summary>More options</summary>
+            <label class="check-line"><input id="web-search" type="checkbox" name="enable_web_search" /> Search configured reliable sources on the web</label>
+            <label class="field-label" for="source-text">Paste source text to compare <span class="optional">optional · treated as user-provided evidence</span></label>
+            <textarea id="source-text" name="source_text" class="small-textarea" placeholder="Paste a report or source excerpt here…"></textarea>
+          </details>
+
+          <label class="consent-line"><input id="consent" type="checkbox" required /> <span>I have permission to submit this content. I understand it will be processed to extract claims and check sources.</span></label>
+          <button id="submit-button" class="submit-button" type="submit"><span>Check this forward</span><span class="button-arrow">→</span></button>
+          <p class="form-footnote">Your uploads are not stored by this app. Sensitive information in a message may still be sent to any server-side services configured by its operator.</p>
+        </form>
+      </section>
+
+      <section id="loading" class="loading-panel hidden" aria-live="polite"><span class="spinner"></span><div><strong>Checking the claims</strong><p>Reading content and looking for relevant evidence…</p></div></section>
+      <section id="error" class="error-panel hidden" role="alert"></section>
+      <section id="results" class="results hidden" aria-live="polite"></section>
+
+      <section class="verdict-key" aria-label="How to read the results">
+        <div class="key-heading"><span>THE RESULT</span><h2>Clear labels. Evidence to follow.</h2></div>
+        <div class="key-grid">
+          <div class="key-item"><span class="status-dot verified"></span><div><strong>Verified</strong><p>Evidence supports the claim.</p></div></div>
+          <div class="key-item"><span class="status-dot false"></span><div><strong>False</strong><p>Evidence conflicts with the claim.</p></div></div>
+          <div class="key-item"><span class="status-dot partial"></span><div><strong>Partly supported</strong><p>Some details match; others do not.</p></div></div>
+          <div class="key-item"><span class="status-dot outdated"></span><div><strong>Outdated</strong><p>A source says the information has changed.</p></div></div>
+          <div class="key-item"><span class="status-dot unknown"></span><div><strong>Cannot confirm</strong><p>Evidence is missing or inconclusive.</p></div></div>
+        </div>
+        <p class="disclaimer">A result is only as strong as its sources. Read the evidence before making decisions, especially about health, money, or safety.</p>
+      </section>
+    </main>
+
+    <footer><span>ForwardCheck</span><span>Evidence first. Share thoughtfully.</span></footer>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
